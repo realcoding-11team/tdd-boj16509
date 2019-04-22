@@ -52,4 +52,13 @@ public class ControllerTest {
             }
         } catch(Exception e){}
     }
+    
+    @Test
+    public void nomalCaseTest(){
+        Piece sang = new Piece(1,1,0);
+        Piece king = new Piece(4, 3,0);
+        Controller controller = new Controller();
+        int ret = controller.bfs(sang,king);
+        assertThat(ret, is(1));
+    }
 }
