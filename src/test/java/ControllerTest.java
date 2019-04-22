@@ -63,7 +63,7 @@ public class ControllerTest {
     }
     
     @Test(timeout = 1000)
-    public void main() {
+    public void timeOutTest() {
         Controller controller = new Controller();
         Piece sang, king;
         sang = new Piece(4, 2, 0);
