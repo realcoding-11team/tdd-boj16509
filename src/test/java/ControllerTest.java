@@ -7,6 +7,22 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ControllerTest {
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void InvalidInputInSangTest(){
+        Piece sang = new Piece(5,-3,0);
+        Piece king = new Piece(2, 3,0);
+        Controller controller = new Controller();
+        controller.bfs(sang,king);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void InvalidInputInKingTest(){
+        Piece sang = new Piece(2,1,0);
+        Piece king = new Piece(8, 13,0);
+        Controller controller = new Controller();
+        controller.bfs(sang,king);
+    }
     @Test
     public void externalFileTest(){
         int start = 1;
@@ -28,7 +44,6 @@ public class ControllerTest {
                 assertThat(ret,is(output));
             }
         } catch(Exception e){}
-
     }
 
     @Test(timeout = 1000)
