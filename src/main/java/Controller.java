@@ -15,7 +15,14 @@ class Controller {
     public boolean isRange(int y, int x){
         return !(y < 0 || y >= Y || x < 0 || x >= X);
     }
+    public void assertInput(Piece sang, Piece king){
+        if(!(isRange(sang.y, sang.x) && isRange(king.y, king.x)))
+            throw new IllegalArgumentException();
+    }
     public int bfs(Piece sang, Piece king) {
+
+        assertInput(sang, king);
+
         Queue<Piece> q = new LinkedList<Piece>();
         boolean[][] visited = new boolean[Y][X];
         q.add(sang);
