@@ -17,6 +17,13 @@ public class ControllerTest {
         controller.bfs(sang,king);
     }
     @Test(expected = IllegalArgumentException.class)
+    public void InvalidInputIsSameTest(){
+        Piece sang = new Piece(3,3,0);
+        Piece king = new Piece(3,3,0);
+        Controller controller = new Controller();
+        controller.bfs(sang,king);
+    }
+    @Test(expected = IllegalArgumentException.class)
     public void InvalidInputInKingTest(){
         Piece sang = new Piece(2,1,0);
         Piece king = new Piece(8, 13,0);

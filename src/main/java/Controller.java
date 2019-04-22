@@ -16,6 +16,8 @@ class Controller {
         return !(y < 0 || y >= Y || x < 0 || x >= X);
     }
     public void assertInput(Piece sang, Piece king){
+        if(sang.y == king.y && sang.x == king.x)
+            throw new IllegalArgumentException();
         if(!(isRange(sang.y, sang.x) && isRange(king.y, king.x)))
             throw new IllegalArgumentException();
     }
