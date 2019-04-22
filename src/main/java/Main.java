@@ -6,7 +6,6 @@ public class Main {
     public static void main(String[] args) {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("./realtemp.txt"));
-            bw.write("asdsads");
         } catch(Exception e){}
 
         Scanner sc = new Scanner(System.in);
