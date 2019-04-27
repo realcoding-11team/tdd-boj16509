@@ -60,4 +60,22 @@ public class ControllerTest {
             }
         } catch(Exception e){}
     }
+    
+    @Test
+    public void nomalCaseTest(){
+        Piece sang = new Piece(1,1,0);
+        Piece king = new Piece(4, 3,0);
+        Controller controller = new Controller();
+        int ret = controller.bfs(sang,king);
+        assertThat(ret, is(1));
+    }
+    
+    @Test(timeout = 1000)
+    public void timeOutTest() {
+        Controller controller = new Controller();
+        Piece sang, king;
+        sang = new Piece(4, 2, 0);
+        king = new Piece(2, 5, 0);
+        System.out.print(controller.bfs(sang, king));
+    }
 }
