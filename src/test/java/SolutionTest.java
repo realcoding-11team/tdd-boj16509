@@ -2,11 +2,25 @@ import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SolutionTest {
+
+    @Test
+    public void trackingTest(){
+        Piece sang = new Piece(5,5,0);
+        Piece king = new Piece(5, 6,0);
+        Solution solution = new Solution();
+        int ret = solution.bfs(sang,king);
+        ArrayList<ArrayList<Integer>> track = (ArrayList<ArrayList<Integer>>)solution.tracking();
+        for(int i=0;i<track.size();i++)
+            System.out.println(track.get(i).get(0)+ " "+ track.get(i).get(1));
+        assertThat(ret, is(5));
+    }
 
     @Test
     public void nomalCaseTest(){

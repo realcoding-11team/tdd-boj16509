@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 class Solution {
 
@@ -12,7 +10,9 @@ class Solution {
     private final int[] ax = new int[]{0, 0, 1, 1, 0, 0, -1, -1};
     private final int Y = 10;
     private final int X = 9;
-    public static int[][][] track;
+    private static int[][][] track;
+    private static List<List<Integer>> trackList;
+    private Piece king;
 
     public boolean isRange(int y, int x){
         return !(y < 0 || y >= Y || x < 0 || x >= X);
@@ -23,13 +23,23 @@ class Solution {
         if(!(isRange(sang.y, sang.x) && isRange(king.y, king.x)))
             throw new IllegalArgumentException();
     }
-    public void tracking(Piece u){
+
+    public List tracking(){
+
+        trackList = new ArrayList<List<Integer>>();
+        tracking(king);
+        return trackList;
+    }
+    private void tracking(Piece u){
         if(u.y == -1 && u.x == -1) return;
         tracking(new Piece(track[u.y][u.x][0],track[u.y][u.x][1],0));
-        System.out.println(u.y+" "+u.x);
+        ArrayList<Integer> item = new ArrayList<Integer>();
+        item.add(u.y);
+        item.add(u.x);
+        trackList.add(item);
     }
     public int bfs(Piece sang, Piece king) {
-
+        this.king = king;
         assertInput(sang, king);
 
         track = new int[Y][X][2];
