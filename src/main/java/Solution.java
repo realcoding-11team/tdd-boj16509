@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Controller {
+class Solution {
 
     private final int[] dy = new int[]{-3, -3, -2, 2, 3, 3, 2, -2};
     private final int[] dx = new int[]{-2, 2, 3, 3, 2, -2, -3, -3};

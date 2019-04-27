@@ -17,4 +17,8 @@ public class PieceTest {
         assertThat(piece.x, is(2));
         assertThat(piece.count, is(3));
     }
+    @Test(expected = IllegalArgumentException.class)
+    public void invalidCreateTest(){
+        Piece piece = new Piece(-5,-3,3);
+    }
 }
