@@ -8,6 +8,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ControllerTest {
 
+    @Test
+    public void nomalCaseTest(){
+        Piece sang = new Piece(1,1,0);
+        Piece king = new Piece(4, 3,0);
+        Controller controller = new Controller();
+        int ret = controller.bfs(sang,king);
+        assertThat(ret, is(1));
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void InvalidInputInSangTest(){
@@ -37,8 +45,8 @@ public class ControllerTest {
         try {
             for (int nth = start;nth<=end;nth++){
                 Controller controller = new Controller();
-                BufferedReader brin = new BufferedReader(new FileReader(String.format("./data/%d.in",nth)));
-                BufferedReader brout = new BufferedReader(new FileReader(String.format("./data/%d.out",nth)));
+                BufferedReader brin = new BufferedReader(new FileReader(String.format("./src/main/resources/data/%d.in",nth)));
+                BufferedReader brout = new BufferedReader(new FileReader(String.format("./src/main/resources/data/%d.out",nth)));
                 String[] inputs;
                 Piece sang, king;
                 inputs = brin.readLine().split(" ");
