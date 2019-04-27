@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -11,6 +12,7 @@ class Solution {
     private final int[] ax = new int[]{0, 0, 1, 1, 0, 0, -1, -1};
     private final int Y = 10;
     private final int X = 9;
+    public static int[][][] track;
 
     public boolean isRange(int y, int x){
         return !(y < 0 || y >= Y || x < 0 || x >= X);
@@ -21,9 +23,19 @@ class Solution {
         if(!(isRange(sang.y, sang.x) && isRange(king.y, king.x)))
             throw new IllegalArgumentException();
     }
+    public void tracking(Piece u){
+        if(u.y == -1 && u.x == -1) return;
+        tracking(new Piece(track[u.y][u.x][0],track[u.y][u.x][1],0));
+        System.out.println(u.y+" "+u.x);
+    }
     public int bfs(Piece sang, Piece king) {
 
         assertInput(sang, king);
+
+        track = new int[Y][X][2];
+        for(int i=0;i<Y;i++)
+            for(int j=0;j<X;j++)
+                Arrays.fill(track[i][j],-1);
 
         Queue<Piece> q = new LinkedList<Piece>();
         boolean[][] visited = new boolean[Y][X];
@@ -50,13 +62,12 @@ class Solution {
                 x = u.x + dx[i];
                 if (!isRange(y,x) || visited[y][x])
                     continue;
-
+                track[y][x][0] = u.y;
+                track[y][x][1] = u.x;
                 q.add(new Piece(y, x, u.count + 1));
                 visited[y][x] = true;
             }
         }
-
         return -1;
-
     }
 }

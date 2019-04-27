@@ -17,7 +17,6 @@ public class SolutionTest {
         assertThat(ret, is(1));
     }
 
-
     @Test(expected = IllegalArgumentException.class)
     public void InvalidInputInSangTest(){
         Piece sang = new Piece(5,-3,0);
@@ -61,9 +60,7 @@ public class SolutionTest {
             }
         } catch(Exception e){}
     }
-    
 
-    
     @Test(timeout = 1000)
     public void timeOutTest() {
         Solution solution = new Solution();
